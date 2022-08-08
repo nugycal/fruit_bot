@@ -1,0 +1,236 @@
+<html class="wrapper">
+    <head>
+        <title>Fruit Bot World</title>
+        <meta http-equiv="pragma" content="no-cache" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="icons.css">
+        <link rel="stylesheet" href="styles.css">
+        <script src="ui.js" type="text/javascript"></script>
+        <script src="app.js" type="text/javascript"></script>
+    </head>
+    <body onload="set_starting_values(); createFields(); distributeFields(); get_user_input(); $('#changelog').modal('show');">
+        <!-- Modal -->
+        <div class="modal fade" id="changelog" tabindex="-1" role="dialog" aria-labelledby="changelog_Label" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="changelog_Label">Changelog</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body" style="overflow: scroll;">
+                        <div class="list-group" style="height: 30%;">
+                            <div class="list-group-item list-group-item-action flex-column align-items-start" disabled>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Added New Fruits!</h5>
+                                    <small class="text-muted">01/06/2018</small>
+                                </div>
+                                <p class="mb-1">Added in Cherries, Grapes, Lemons, Limes, Mangoes and Strawberries. Also added in a 'Large' world type, and adjusted other sizes accordingly.</p>
+                            </div>
+                            <div class="list-group-item list-group-item-action flex-column align-items-start" disabled>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Adjusted Default Values</h5>
+                                    <small class="text-muted">24/05/2018</small>
+                                </div>
+                                <p class="mb-1">Adjusted the frequency of certain locations to prevent being overrun with apples. Changed the initial value of electricity to better reflect the value of the assignment.</p>
+                                <small class="text-muted">Electricity values can sometimes become bugged. I am aware of the issue. If it arises for you, refresh the window.</small>
+                            </div>
+                            <div class="list-group-item list-group-item-action flex-column align-items-start" disabled>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Added in 'Boundaries'</h5>
+                                    <small class="text-muted">24/05/2018</small>
+                                </div>
+                                <p class="mb-1">Added a maximum amount of moves (currently set to 10), a maximum amount of fruit able to be carried (also set to 10), and a maximum amount of electricity able to be held (computed based on world size).</p>
+                                <small class="text-muted">Values are subject to change.</small>
+                            </div>
+                            <div class="list-group-item list-group-item-action flex-column align-items-start" disabled>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Added in Kiwifruit</h5>
+                                    <small>23/05/18</small>
+                                </div>
+                                <p class="mb-1">Kiwifruit selling and buying locations are now generated as part of worlds</p>
+                                <small class="text-muted">Kiwifruit locations are quite rare.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="icon-wrapper input-wrapper left form-check form-check-inline">
+            <div class="input icon">
+            </div>
+            <input type="text" id="input" aria-describedby="userInput" placeholder="Enter move" autofocus>
+        </div>
+        <div id="page-wrap">
+            <div class="icon-wrapper turns-wrapper right">
+                <div class="moves icon">
+                </div>
+                <p id="turns">
+                    12
+                </p>
+            </div>
+            
+            <div class="icon-wrapper money-wrapper right">
+                <div class="money icon">
+                </div>
+                <p id="money">
+                    $150
+                </p>
+            </div>
+            
+            <div class="icon-wrapper electricity-stat-wrapper right under">
+                <div class="electricity icon">
+                </div>
+                <p id="electricity">
+                    12
+                </p>
+            </div>
+            
+            <div class="icon-wrapper fruit-wrapper hidden right under">
+                <div class="apple icon">
+                </div>
+                <p id="fruit">
+                    12
+                </p>
+            </div>
+            
+            <div class="icon-wrapper about-wrapper right under">
+                <button class="icon btn about" type="button" data-toggle="modal" data-target="#about" style="margin-left: 10.5px !important;" onclick="parse_locations_into_world();">
+                    <span class="badge badge-primary">
+                        ?
+                    </span>
+                </button>
+            </div>
+            <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="about_Title" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header container">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="about-1-tab" data-toggle="tab" href="#about_1" role="tab" aria-controls="about-1" aria-selected="true">
+                                            <h5 class="modal-title" id="about_LongTitle_1">
+                                                About Fruit Bot
+                                            </h5>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="about-1-tab" data-toggle="tab" href="#about_2" role="tab" aria-controls="about-2" aria-selected="true">
+                                            <h5 class="modal-title" id="about_LongTitle_2">
+                                                How to Play
+                                            </h5>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="about-1-tab" data-toggle="tab" href="#about_3" role="tab" aria-controls="about-3" aria-selected="true">
+                                            <h5 class="modal-title" id="about_LongTitle_3">
+                                                Export World
+                                            </h5>
+                                        </a>
+                                    </li>
+                                </ul>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">
+                                    &times;
+                                </span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="about_1" role="tabpanel" aria-labelledby="about-1-tab">
+                                    The icons used in this project are the intellectual property of <a href="http://www.freepik.com" title="Freepik">Freepik</a>, a user on the website <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>.
+                                <br><br>
+                                Additionally, some JQuery functions were adapted from posts on <a href="http://www.stackoverflow.com" title="StackOverflow">StackOverflow</a> (specific reference to these posts can be found in code comments).
+                                <br><br>
+                                All other code (JS, JQuery, CSS and HTML) was written by me, <b>Callum Avery</b>.<br>
+                                </div>
+                                <div class="tab-pane fade" id="about_2" role="tabpanel" aria-labelledby="about-2-tab">
+                                    The basics of the game can be found <a href="https://cgi.cse.unsw.edu.au/~cs1511/18s1/assignments/ass3/index.html">here</a>.
+                                    <br>In essence, the goal of the game is to return as large a profit as possible.
+                                    <br>
+                                    <br>
+                                    The statistics displayed on the screen (in order) are:
+                                    <br> - Turns Remaining
+                                    <br> - Electricity
+                                    <br> - Money
+                                    <br> - Fruit (only displayed if you are carrying fruit)
+                                    <br><br>
+                                    You can enter your 'moves' in the input box in the bottom-left corner, in the format:
+                                    <br>
+                                    '&lt;command&gt; &lt;amount&gt;'
+                                    <br>Where commands include:
+                                    <br> - Move
+                                    <br> - Buy
+                                    <br> - Sell
+                                    <br>
+                                    <br>Also, the world type/size can be manually inputted as a URL argument (?world=medium | ?world=tiny)
+                                    <br>
+                                    <br>A manual size is specified as a URL argument as well (?amount=&lt;amount&gt;)
+                                    <br>
+                                </div>
+                                <div class="tab-pane fade" id="about_3" role="tabpanel" aria-labelledby="about-3-tab">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exportedWorld">World File Contents:</label>
+                                            <textarea class="form-control" id="exportedWorld" rows="10"></textarea>
+                                            <a id="download" href="#">Click to Download</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="container">
+            </div>
+        </div>
+        <!--
+        <div class="icon-wrapper anything-wrapper">
+            <div class="anything icon"><span class="badge badge-success">$</span>
+            </div>
+        </div>
+        <div class="icon-wrapper apple-wrapper">
+            <div class="apple icon"><span class="badge badge-success">$</span>
+            </div>
+        </div>
+        <div class="icon-wrapper banana-wrapper">
+            <div class="banana icon"><span class="badge badge-danger">$</span>
+            </div>
+        </div>
+        <div class="icon-wrapper durian-wrapper">
+            <div class="durian icon"><span class="badge badge-success">$</span>
+            </div>
+        </div>
+        <div class="icon-wrapper electricity-wrapper">
+            <div class="electricity icon"><span class="badge badge-danger">$</span>
+            </div>
+        </div>
+        <div class="icon-wrapper kiwi-wrapper">
+            <div class="kiwi icon"><span class="badge badge-success">$</span>
+            </div>
+        </div>
+        <div class="icon-wrapper other-wrapper">
+            <div class="other icon">
+            </div>
+        </div>
+        <div class="icon-wrapper watermelon-wrapper">
+            <div class="watermelon icon"><span class="badge badge-danger">$</span>
+            </div>
+        </div>
+        -->
+    </body>
+</html>

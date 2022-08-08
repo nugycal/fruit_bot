@@ -1,0 +1,292 @@
+* {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+}
+.wrapper {
+    width: 100%;
+    heignt: 100%;
+    margin: 0px auto;
+    padding: 5px;
+    background-color: #0A0A0A;
+    z-index: 10;
+}
+body {
+    background-color: #0A0A0A;
+}
+.right {
+    float: right;
+    margin-right: 5px;
+}
+.left {
+    float: left;
+    margin-left: 5px;
+}
+.icon {
+    margin: 10px;
+    margin-top: 8px;
+    width: 40px;
+    height: 40px;
+}
+.banana {
+    margin-top: 10px !important;
+}
+.icon-wrapper {
+    border-radius: 1024px;
+    width: 60px;
+    height: 60px;
+    padding-top: 0.1px;
+    margin: 10px;
+    z-index: 10;
+}
+
+.icon-wrapper .badge {
+    margin-left: 22px;
+    margin-top: -30px;
+}
+
+.anything-wrapper {
+    background-color: #2C3E50;
+}
+.anything {
+    background-color: #2C3E50;
+}
+.apple-wrapper {
+    background-color: #CF000F;
+}
+.apple {
+    background-color: #CF000F;
+}
+.banana-wrapper {
+    background-color: #F39C12;
+}
+.banana {
+    background-color: #F39C12;
+}
+.cherry-wrapper {
+    background-color: #CF000F;
+}
+.cherry {
+    background-color: #CF000F;
+}
+.durian-wrapper {
+    background-color: #1E824C;
+}
+.durian {
+    background-color: #1E824C;
+}
+.electricity-wrapper {
+    background-color: #2C3E50;
+}
+.electricity {
+    background-color: #2C3E50;
+}
+.grape-wrapper {
+    background-color: #663399;
+}
+.grape {
+    background-color: #663399;
+}
+.kiwi-wrapper {
+    background-color: #96281B;
+}
+.kiwi {
+    background-color: #96281B;
+}
+.lemon-wrapper {
+    background-color: #F39C12;
+}
+.lemon {
+    background-color: #F39C12;
+}
+.lime-wrapper {
+    background-color: #1E824C;
+}
+.lime {
+    background-color: #1E824C;
+}
+.mango-wrapper {
+    background-color: #D35400;
+}
+.mango {
+    background-color: #D35400;
+}
+.money-wrapper {
+    background-color: #2C3E50;
+    margin-top: 150px !important;
+    width: 160px !important;
+    margin-right: -170px !important;
+}
+.money {
+    background-color: #2C3E50;
+}
+.money-wrapper .icon {
+    margin-left: 16px;
+}
+.money-wrapper #money {
+    margin-top: -47px;
+    margin-left: 75px;
+    color: white;
+    font-size: 24px;
+}
+
+.turns-wrapper {
+    background-color: #2C3E50;
+    width: 160px !important;
+}
+.turns {
+    background-color: #2C3E50;
+}
+.turns-wrapper .icon {
+    margin-left: 16px;
+}
+.turns-wrapper #turns {
+    margin-top: -47px;
+    margin-left: 75px;
+    color: white;
+    font-size: 24px;
+}
+
+.orange-wrapper {
+    background-color: #D35400;
+}
+.orange {
+    background-color: #D35400;
+}
+.other-wrapper {
+    background-color: #22A7F0;
+}
+.other {
+    background-color: #22A7F0;
+}
+.strawberry-wrapper {
+    background-color: #CF000F;
+}
+.strawberry {
+    background-color: #CF000F;
+}
+.watermelon-wrapper {
+    background-color: #26C281;
+}
+.watermelon {
+    background-color: #26C281;
+}
+
+#page-wrap {
+     width: 100%;
+     margin: 0 auto;
+}
+#container {
+    width: 90%;
+    height: 90%;
+    position: relative;
+    float: inherit;
+    z-index: 10;
+}
+
+.field {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+.under {
+    margin-top: 80px !important;
+    margin-right: -170px !important;
+}
+
+.input-wrapper input {
+    width: 180px !important;
+    height: auto;
+    background-color: #2C3E50 !important;
+    border: none;
+    color: white;
+    margin-left: -5px;
+}
+.input-wrapper {
+    margin-left: 10px !important;
+    position: fixed;
+    bottom: 10px;
+    background-color: #2C3E50;
+    width: 240px !important;
+}
+.input-wrapper .icon {
+    margin-left: 16px;;
+    width: 20px !important;
+    height: 20px !important;
+}
+.icon {
+    background-repeat: no-repeat !important;
+}
+
+.electricity-stat-wrapper {
+    background-color: #2C3E50;
+    width: 160px !important;
+}
+.electricity-stat {
+    background-color: #2C3E50;
+}
+.electricity-stat-wrapper .icon {
+    margin-left: 16px;
+}
+.electricity-stat-wrapper #electricity {
+    margin-top: -47px;
+    margin-left: 75px;
+    color: white;
+    font-size: 24px;
+}
+
+.fruit-wrapper {
+    background-color: #2C3E50;
+    margin-top: 220px !important;
+    width: 160px !important;
+    margin-right: -170px !important;
+}
+.visible {
+    display: inline;
+}
+.hidden {
+    display: none;
+}
+.fruit {
+    background-color: #2C3E50;
+}
+.fruit-wrapper .icon {
+    margin-left: 16px;
+    background-color: #2C3E50;
+}
+.fruit-wrapper #fruit {
+    margin-top: -47px;
+    margin-left: 75px;
+    color: white;
+    font-size: 24px;
+}
+
+.current:after {
+    content: '';
+    background-color: #BF55EC;
+    border-radius: 1024px;
+    width: 75px !important;
+    height: 75px !important;
+    position: absolute;
+    margin-left: -67.5px;
+    margin-top: -7.5px;
+    z-index: -10;
+    border: 3px #674172 solid;
+}
+.modal-backdrop {
+    z-index: 1;
+}
+
+.about-wrapper {
+    background-color: #2C3E50;
+    bottom: 5px;
+    right: 185px;
+    position: absolute;
+}
+.about-wrapper .about {
+    background-color: #2C3E50;
+    margin-left: 10.5px !important;
+}
+.about-wrapper .icon {
+    margin-left: 16px;
+}
+
